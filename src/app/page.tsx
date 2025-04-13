@@ -49,13 +49,13 @@ export default function BirthdayWish() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }} 
+          transition={{ delay: 0.5 }}
         >
-          <p>Thank you for being an amazing teacher and mentor! 🚀</p>
+          {/* <p>Thank you for being an amazing teacher and mentor! 🚀</p>
           <p>
             Your dedication to teaching and helping others grow is truly
             inspiring.
-          </p>
+          </p> */}
           <p>Wishing you a year filled with:</p>
 
           <motion.ul
@@ -63,7 +63,7 @@ export default function BirthdayWish() {
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
           >
-            <li>🎯 More successful students</li>
+            {/* <li>🎯 More successful students</li> */}
             <li>💻 Exciting coding adventures</li>
             <li>📚 New learning experiences</li>
             <li>✨ And lots of happiness!</li>
