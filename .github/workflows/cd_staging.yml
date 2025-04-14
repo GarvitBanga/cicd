@@ -1,15 +1,13 @@
- name: Deploy to Staging
+name: Deploy to staging
+on:
+  push:
+    branches: [ main ]
 
- on:
-   push:
-     branches: [main]
-
- jobs:
-   redeploy_everything:
-     name: Redeploy everything to staging
-     runs-on: ubuntu-latest
-     steps:
-       - name: SSH into the server
+jobs:
+  redeploy_everything:
+    runs-on: ubuntu-latest
+    name: Deploying everything to the staging cluster
+    steps:
        - run: |
            echo "${{ secrets.ID_RSA_DIGITALOCEAN }}" &> ~/ssh_key
            ssh -i ~/ssh_key  root@159.223.121.130
@@ -19,5 +17,3 @@
            pm2 restart frontend-server
            pm2 restart http-server
            pm2 restart ws-server
-
-      
