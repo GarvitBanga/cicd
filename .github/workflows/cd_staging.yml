@@ -2,8 +2,7 @@
 
  on:
    push:
-     branches:
-       - "main" 
+     branches: [main]
 
  jobs:
    redeploy_everything:
@@ -12,7 +11,7 @@
      steps:
        - name: SSH into the server
        - run: |
-           echo ${{ secrets.ID_RSA_DIGITALOCEAN }} &> ~/ssh_key
+           echo "${{ secrets.ID_RSA_DIGITALOCEAN }}" &> ~/ssh_key
            ssh -i ~/ssh_key  root@159.223.121.130
            cd cicd && git pull
            pnpm install
