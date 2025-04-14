@@ -1,0 +1,24 @@
+ name: Deploy to Staging
+
+ on:
+   push:
+     branches:
+       - "main" 
+
+ jobs:
+   redeploy_everything:
+     name: Redeploy everything to staging
+     runs-on: ubuntu-latest
+     steps:
+       - name: SSH into the server
+       - run: |
+           echo ${{ secrets.ID_RSA_DIGITALOCEAN }} &> ~/ssh_key
+           ssh -i ~/ssh_key  root@159.223.121.130
+           cd cicd && git pull
+           pnpm install
+           pnpm run build 
+           pm2 restart frontend-server
+           pm2 restart http-server
+           pm2 restart ws-server
+
+      
